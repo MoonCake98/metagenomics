@@ -1,0 +1,23 @@
+
+
+
+rule minimap2:
+    input:
+
+    output:
+
+rule pear:
+    input:
+
+    output:
+
+rule dada2:
+    input:
+
+    output:
+
+rule porechop:
+    input:
+
+    output:
+
