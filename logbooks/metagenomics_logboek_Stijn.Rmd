@@ -1,0 +1,46 @@
+---
+title: "metagenomics_logboek_Stijn"
+author: "Stijn Vermeulen"
+date: "2025-03-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro
+
+Vervuiling is een groot probleem in de moderne samenleving en een van de grootste bijdrager daarbij is plastic afval. Gelukkig is daar een alternatief voor gevonden: Bioplastic. Bioplastics zouden beter plastic zijn dan plastic, omdat in tegenstelling tot plastic bioplastics zijn gemaakt van biologisch afbreekbare materialen. PHA is hier een goed voorbeeld van, die breekt binnen 90 dagen helemaal af in basis grond. Maar dat betekend niet dat bioplastic perfect is, het kan nog steeds schadelijk zijn voor de grond waar het in beland. Daarom gaan wij hier onderzoeken wat voor effect PHA heeft op micro-organismen in de grond.
+
+## Data
+
+We have two types of sequencing: Minion and Illumina sequencing.
+
+We have three sample types: control, pallets and powder.
+
+## Tool analysis
+
+### PEAR
+
+PEAR kan worden geinstalleerd via bioconda. 
+Afgeleidt van de [github pagina](https://github.com/tseemann/PEAR) en de [documentatie](https://cme.h-its.org/exelixis/web/software/pear/doc.html) lijkt het dat PEAR van illumina reads kijkt. 
+In dit [artikel](https://cme.h-its.org/exelixis/web/software/pear/doc.html) staat dat PEAR kijkt naar overlap op foward en reverse reads en die samenvoegd, maar onze data bestaat alleen maar uit minION data. PEAR is dus niet relevant voor ons onderzoek
+
+### Nanoplot
+
+Nanoplot zit in bioconda.
+Nanoplot neemt als input data afkomstig van nanopores(inculusief minION) in meerdere soorten format, bijv. fastq, sorted bam en fasta bestanden(https://github.com/wdecoster/NanoPlot). HIevan worden plots gemaakt en een html summary + een statestiek raport. 
+Deze tool lijkt fastqc te vervangen voor nanopore data, omdat fastqc vrij langzaam kan zijn bij nanopore data.
+
+### Optioneel: minIONQC
+voor flow cell analyse, geeft extra betrouwbaarheid. Deze gebruikt een sequencing_summary.txt om figuren te genereren in te plaats van direct op de fastq files. 
+
+### pycoQC
+gebruikt net als minIONQC sequencing_summary.txt om figuren te genereren. De figuren van pycoQC zijn interactief. Verder geeft het dezelfde soort plots als Nanoplot. [documentatie](https://a-slide.github.io/pycoQC/)
+
+### welke van de drie?
+
+Als basis is het goed om te kiezen tussen pycoQC en Nanoplot, minIONQC moet alleen gebruikt worden voor extra flow cell analyse. Het beste lijkt mij om gewoon Nanoplot te gebruiken, omdat er al wat flow cell analyse lijkt te zijn en dat niet heel relevant is voor ons project en nonoplot direct werkt op de fastq files, wat mij makkelijker lijkt.
+
+
