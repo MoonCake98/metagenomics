@@ -1,0 +1,9 @@
+# Config file
+
+
+# Path to the output directory
+RESULTS: "/students/2024-2025/Thema07/metagenomics/bioplastic"
+
+
+# Path to the minionqc 
+MINIONQC_PATH: "/homes/machristo/metagenomics/metagenomics/workflow/scripts"
