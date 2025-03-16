@@ -1,8 +1,13 @@
 # Config file
 
 
+INPUT_DIR: "/commons/Themas/Thema07/metagenomics/bioplastic"
+
 # Path to the output directory
-RESULTS: "/students/2024-2025/Thema07/metagenomics/bioplastic"
+OUTPUT_DIR: "/students/2024-2025/Thema07/metagenomics/bioplastic"
+
+
+SAMPLES: "20240418_1521_MN35459_FAX77312_60832f1a"
 
 
 # Path to the minionqc 
