@@ -5,17 +5,16 @@
 configfile: "config/config.yaml"
 
 # Parameters from config.yaml
-MINION_QC = config["MINIONQC_PATH"]
-RESULTS = config["RESULTS"]
-
+INPUT_DIR = config["INPUT_DIR"]
+OUTPUT_DIR = config["OUTPUT_DIR"]
+SAMPLES = config["SAMPLES"]
 # Final output files 
 rule all:
     input:
         # Run QC 
         expand(
-            "{results}/minion_qc",
-            results = RESULTS
-
+            "/students/2024-2025/Thema07/metagenomics/bioplastic/minion_qc_{sample}",
+            sample = SAMPLES
         )
 
 
