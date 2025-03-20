@@ -7,7 +7,7 @@ configfile: "config/config.yaml"
 # Parameters from config.yaml
 MINION_QC = config["MINIONQC_PATH"]
 RESULTS = config["RESULTS"]
-INPUT_FOLDER = config["INPUT"]
+INPUT_FOLDER = config["INPUT_FOLDER"]
 EXAMPLE_SAMPLE = config["EXAMPLE_SAMPLE"]
 
 # Final output files 
@@ -20,7 +20,7 @@ rule all:
 #
 #        ),
         # minimap2 output:
-        expand("{results}/minimap2/{sample}", results = RESULTS, sample = EXAMPLE_SAMPLE)
+        expand("{results}/minimap2/{sample}.sam", results = RESULTS, sample = EXAMPLE_SAMPLE)
 
 # All the rules that is used.
 
