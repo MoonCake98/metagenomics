@@ -11,4 +11,4 @@ RESULTS: "/students/2024-2025/Thema07/metagenomics/bioplastic"
 MINIONQC_PATH: "/homes/machristo/metagenomics/metagenomics/workflow/scripts"
 
 
-EXAMPLE_SAMPLE: "barcode01/FAY08769_pass_barcode01_85e26567_1cef8301_99.fastq.gz"
+EXAMPLE_SAMPLE: "barcode01/FAY08769_pass_barcode01_85e26567_1cef8301_99"
