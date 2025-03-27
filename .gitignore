@@ -172,3 +172,5 @@ cython_debug/
 
 # eztra stuff
 /kraken2_test_data
+
+/logs
