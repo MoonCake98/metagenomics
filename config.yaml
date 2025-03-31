@@ -1,0 +1,2 @@
+barcode_numbers: # barcodes need to be string because otherwise they won't be allowed leading 0's
+  - "01"
