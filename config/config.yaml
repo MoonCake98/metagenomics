@@ -1,14 +1,25 @@
 # Config file
 
-
 INPUT_DIR: "/commons/Themas/Thema07/metagenomics/bioplastic"
 
 # Path to the output directory
 OUTPUT_DIR: "/students/2024-2025/Thema07/metagenomics/bioplastic"
 
-
+# Sample file
 SAMPLES: "20240418_1521_MN35459_FAX77312_60832f1a"
+
+
+BARCODE_DIR: "/commons/docent/Thema07/metagenomics/bioplastic/soil_metagenomics/Ariana/20240418_1521_MN35459_FAX77312_60832f1a/fastq_pass"
+
+
+BARCODES: ["barcode01", "barcode02", "barcode03", "barcode04", "barcode05", "barcode06"]
 
 
 # Path to the minionqc 
 MINIONQC_PATH: "/homes/machristo/metagenomics/metagenomics/workflow/scripts"
+
+# Path to the chocophlan
+CHOCO_PATH: "/students/2024-2025/Thema07/metagenomics/wastewater/data/chocophlan"
+
+# Path to the uniref
+UNIREF_PATH: "/students/2024-2025/Thema07/metagenomics/wastewater/data/uniref90_diamond"
