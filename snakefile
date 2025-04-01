@@ -8,17 +8,39 @@ configfile: "config/config.yaml"
 INPUT_DIR = config["INPUT_DIR"]
 OUTPUT_DIR = config["OUTPUT_DIR"]
 SAMPLES = config["SAMPLES"]
+CHOCO_DB = config["CHOCO_PATH"]
+UNIREF_DB = config["UNIREF_PATH"]
+BARCODES = config["BARCODES"]
+BARCODE_DIR = config["BARCODE_DIR"]
+
 # Final output files 
 rule all:
     input:
+        # Merge for every barcode every file in the folder
+        #expand("{output_dir}/data/combined_wgs_{barcode}.fastq",
+         #       output_dir = OUTPUT_DIR, barcode = BARCODE),
         # Run QC 
-        expand(
-            "/students/2024-2025/Thema07/metagenomics/bioplastic/minion_qc_{sample}",
-            sample = SAMPLES
-        )
+        #expand(
+         #   "{output_dir}/minion_qc/{sample}",
+          #  sample = SAMPLES, output_dir = OUTPUT_DIR
+        #),
+        # Convert Kraken output to MPA output to use for HUMAnN
+        expand("{output_dir}/data/{barcode}.mpa.txt", 
+                output_dir = OUTPUT_DIR, barcode = BARCODES),
+        
+        # Run HUMAnN
+        #expand("{output_dir}/humann/{barcode}_genefamilies.tsv",
+         #      barcode = BARCODE, output_dir = OUTPUT_DIR)
+        
 
 
 # All the rules that is used.
-
+# Merge the files in every barcode folder
+#include: "workflow/rules/combine_wgs.smk",
 # Preprocessing check QC 
-include: "workflow/rules/minion_qc.smk"
+#include: "workflow/rules/minion_qc.smk",
+# Convert Kraken output to MPA format 
+include: "workflow/rules/kraken2mpa.smk"
+# HUMAnN technical analysis
+#include: "workflow/rules/humann.smk"
+
