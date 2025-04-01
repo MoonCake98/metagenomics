@@ -8,6 +8,7 @@ configfile: "config/config.yaml"
 MINION_QC = config["MINIONQC_PATH"]
 RESULTS = config["RESULTS"]
 INPUT_FOLDER = config["INPUT_FOLDER"]
+SAMPLE = config["SAMPLE"]
 
 # Final output files 
 rule all:
@@ -19,7 +20,8 @@ rule all:
 #
 #        ),
         # bracken run:
-        expand("{results}/bracken/{sample}.bracken", results=RESULTS, sample=SAMPLE)
+        expand("{results}/bracken/{sample}.bracken", results=RESULTS, sample=SAMPLE),
+        expand("{results}/bracken/{sample}_bracken_species.kreport2", results=RESULTS, sample=SAMPLE)
 
 # All the rules that is used.
 

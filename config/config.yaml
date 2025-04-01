@@ -10,4 +10,4 @@ RESULTS: "/students/2024-2025/Thema07/metagenomics/bioplastic"
 # Path to the minionqc 
 MINIONQC_PATH: "/homes/machristo/metagenomics/metagenomics/workflow/scripts"
 
-
+SAMPLE: ["combined_wgs_barcode01_report", "combined_wgs_barcode02_report", "combined_wgs_barcode03_report", "combined_wgs_barcode04_report", "combined_wgs_barcode05_report", "combined_wgs_barcode06_report"]

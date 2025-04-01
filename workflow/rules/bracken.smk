@@ -12,9 +12,10 @@ rule bracken:
         kreport="{RESULTS}/kraken2/{SAMPLE}.kreport2"
     output:
         # output files
-        "{RESULTS}/bracken/{SAMPLE}.bracken"
+        bracken="{RESULTS}/bracken/{SAMPLE}.bracken",
+        species="{RESULTS}/bracken/{SAMPLE}_bracken_species.kreport2"
     message:
-        "braken was executed using {input.database} on {input.kreport} to generate {output}"
+        "braken was executed using {input.database} on {input.kreport} to generate {output.bracken} and {output.species}"
     log:
         # I must use the sample wildcard, so a log file will be created for each sample
         "{RESULTS}/logs/{SAMPLE}_bracken.log"
@@ -22,6 +23,6 @@ rule bracken:
         "./../../envs/bracken_config.yaml"
     shell:
         # run bracken
-        "bracken -d {input.database} -i {input.kreport} -o {output} -l S -t 10 | 2> {log}"
+        "bracken -d {input.database} -i {input.kreport} -w {output.species} -o {output.bracken} -l S -t 10 | 2> {log}"
 
 
