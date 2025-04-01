@@ -25,8 +25,12 @@ rule all:
           #  sample = SAMPLES, output_dir = OUTPUT_DIR
         #),
         # Convert Kraken output to MPA output to use for HUMAnN
-        expand("{output_dir}/data/{barcode}.mpa.txt", 
+        expand("{output_dir}/mpa/{barcode}.mpa.txt", 
                 output_dir = OUTPUT_DIR, barcode = BARCODES),
+        expand("{output_dir}/mpa/{barcode}_mpa.mpa.txt",
+                output_dir=OUTPUT_DIR, barcode=BARCODES),
+        expand("{output_dir}/mpa/sorted_combined_mpa.mpa.txt",
+                output_dir=OUTPUT_DIR)
         
         # Run HUMAnN
         #expand("{output_dir}/humann/{barcode}_genefamilies.tsv",
