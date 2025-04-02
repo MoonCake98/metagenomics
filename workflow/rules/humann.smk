@@ -25,7 +25,7 @@ rule humann:
         --input {input.fastq} \
         --output  {output.temp_dir}\
         --threads 32 \
-        --taxonomic-profile "humann_test_data/new_test_data.mpa.txt" \
+        --taxonomic-profile "/students/2024-2025/Thema07/metagenomics/bioplastic/mpa/sorted_combined_mpa.mpa.txt" \
         --nucleotide-database {input.choco_db} \
         --protein-database  {input.uniref_db} \
         --output-basename {wildcards.barcode} \
