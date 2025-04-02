@@ -6,8 +6,15 @@ INPUT_FOLDER: "/commons/Themas/Thema07/metagenomics/bioplastic/soil_metagenomics
 # Path to the output directory
 RESULTS: "/students/2024-2025/Thema07/metagenomics/bioplastic"
 
-
 # Path to the minionqc 
 MINIONQC_PATH: "/homes/machristo/metagenomics/metagenomics/workflow/scripts"
 
 
+##################################################### MEGAN ########################################################
+# Path to the files that should be converted to .csv for MEGAN
+#INPUT_CONVERTING_FILE: "/students/2024-2025/Thema07/metagenomics/bioplastic/bracken_output"
+INPUT_CONVERTING_FILE: "C:/Users/kasth/School/Programming/Year 2/Period 3 programming/tsv_file.txt"
+OUTPUT_CONVERTING_FILE: "C:/Users/kasth/School/Programming/Year 2/Period 3 programming"
+
+# Path to MEGAN
+MEGAN_PATH: "/students/2024-2025/Thema07/metagenomics/bioplastic/MEGAN"
