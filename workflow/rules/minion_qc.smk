@@ -20,7 +20,7 @@ rule minion_qc:
         """
         Rscript workflow/scripts/MinIONQC.R \
         -i {input} \
-        -o {output} -s TRUE -p 2 2> {log}
+        -o {output} -s TRUE -p 2 2> {log} \
         echo "finished running minionqc"
         """
         
