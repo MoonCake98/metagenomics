@@ -20,8 +20,8 @@ rule all:
 #
 #        ),
         # bracken run:
-        expand("{results}/bracken/{sample}.bracken", results=RESULTS, sample=SAMPLE),
-        expand("{results}/bracken/{sample}_bracken_species.kreport2", results=RESULTS, sample=SAMPLE)
+        expand("{results}/bracken_output/{sample}.bracken", results=RESULTS, sample=SAMPLE),
+        expand("{results}/bracken_output/{sample}_bracken_species.kreport2", results=RESULTS, sample=SAMPLE)
 
 # All the rules that is used.
 
