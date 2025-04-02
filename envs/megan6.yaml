@@ -1,0 +1,5 @@
+# Dependencies for MEGAN6
+channels:
+  - conda-forge
+dependencies:
+  - megan
