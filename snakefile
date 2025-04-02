@@ -12,6 +12,7 @@ CHOCO_DB = config["CHOCO_PATH"]
 UNIREF_DB = config["UNIREF_PATH"]
 BARCODES = config["BARCODES"]
 BARCODE_DIR = config["BARCODE_DIR"]
+TAXON_PROFILE = config["TAXON_PROFILE"]
 
 # Final output files 
 rule all:
@@ -25,16 +26,15 @@ rule all:
           #  sample = SAMPLES, output_dir = OUTPUT_DIR
         #),
         # Convert Kraken output to MPA output to use for HUMAnN
-        expand("{output_dir}/mpa/{barcode}.mpa.txt", 
-                output_dir = OUTPUT_DIR, barcode = BARCODES),
-        expand("{output_dir}/mpa/{barcode}_mpa.mpa.txt",
-                output_dir=OUTPUT_DIR, barcode=BARCODES),
-        expand("{output_dir}/mpa/sorted_combined_mpa.mpa.txt",
-                output_dir=OUTPUT_DIR)
-        
+        #expand("{output_dir}/mpa/{barcode}.mpa.txt", 
+        #        output_dir = OUTPUT_DIR, barcode = BARCODES),
+        #expand("{output_dir}/mpa/{barcode}_mpa.mpa.txt",
+          #      output_dir=OUTPUT_DIR, barcode=BARCODES),
+        #expand("{output_dir}/mpa/sorted_combined_mpa.mpa.txt",
+         #       output_dir=OUTPUT_DIR)
         # Run HUMAnN
-        #expand("{output_dir}/humann/{barcode}_genefamilies.tsv",
-         #      barcode = BARCODE, output_dir = OUTPUT_DIR)
+        expand("{output_dir}/humann/{barcode}_genefamilies.tsv",
+               barcode = BARCODES, output_dir = OUTPUT_DIR)
         
 
 
@@ -44,7 +44,7 @@ rule all:
 # Preprocessing check QC 
 #include: "workflow/rules/minion_qc.smk",
 # Convert Kraken output to MPA format 
-include: "workflow/rules/kraken2mpa.smk"
+#include: "workflow/rules/kraken2mpa.smk"
 # HUMAnN technical analysis
-#include: "workflow/rules/humann.smk"
+include: "workflow/rules/humann.smk"
 
