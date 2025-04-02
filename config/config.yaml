@@ -19,7 +19,9 @@ BARCODES: ["barcode01", "barcode02", "barcode03", "barcode04", "barcode05", "bar
 MINIONQC_PATH: "/homes/machristo/metagenomics/metagenomics/workflow/scripts"
 
 # Path to the chocophlan
-CHOCO_PATH: "/students/2024-2025/Thema07/metagenomics/wastewater/data/chocophlan"
+CHOCO_PATH: "/students/2024-2025/Thema07/metagenomics/wastewater/data/chocophlan/chocophlan"
 
 # Path to the uniref
-UNIREF_PATH: "/students/2024-2025/Thema07/metagenomics/wastewater/data/uniref90_diamond"
+UNIREF_PATH: "/students/2024-2025/Thema07/metagenomics/wastewater/data/uniref90_diamond/uniref"
+
+TAXON_PROFILE: "/students/2024-2025/Thema07/metagenomics/bioplastic/mpa/sorted_combined_mpa.mpa.txt"
