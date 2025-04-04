@@ -1,0 +1,9 @@
+name: kraken_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - kraken2
+  - gzip  # make sure gzip is available
+  - tar   # needed for extracting databases
