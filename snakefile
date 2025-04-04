@@ -29,12 +29,12 @@ include: "workflow/rules/minion_qc.smk"
 # Kraken rule
 rule kraken2:
     input:
-        "kraken2_test_data/combined_wgs_{barcode}.fastq" # input fastq file
+        "/students/2024-2025/Thema07/metagenomics/bioplastic/data/combined_wgs_{barcode}.fastq" # input fastq file
     output:
-        kreport="combined_wgs_0{barcode_number}_report.kreport2", # kreport filename
-        output_txt="combined_wgs_0{barcode_number}_output.txt" # output.txt filename
+        kreport="/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_0{barcode_number}_report.kreport2", # kreport filename
+        output_txt="/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_0{barcode_number}_output.txt" # output.txt filename
     threads: 32 # threadcount (used to decide the speed at which kraken2 will run)
-    log: "logs/kraken2/combined_wgs_barcode0{barcode_number}_kraken_log.txt" # log filename
+    log: "/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_barcode0{barcode_number}_kraken_log.txt" # log filename
     conda: "envs/kraken2.yaml" # env file for kraken2
     shell:
         "kraken2 --db /data/datasets/KRAKEN2_INDEX/k2_standard "
