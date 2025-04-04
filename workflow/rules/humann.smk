@@ -13,10 +13,10 @@ rule humann:
         path_cov="/students/2024-2025/Thema07/metagenomics/bioplastic/humann/{barcode}_pathcoverage.tsv",
         path_abu="/students/2024-2025/Thema07/metagenomics/bioplastic/humann/{barcode}_pathabundance.tsv"
 
-    #conda:
-     #   "workflow/env/humann.yaml"
+    conda:
+        "workflow/env/humann.yaml"
     log:
-        "workflow/logs/humann3/{barcode}_humann.log"
+        f"{OUTPUT_DIR}/logs/humann3/{{barcode}}_humann.log"
     threads: 32
     shell:
         """
@@ -29,10 +29,11 @@ rule humann:
         --nucleotide-database {input.choco_db} \
         --protein-database  {input.uniref_db} \
         --output-basename {wildcards.barcode} \
-        > log 2>&1
+        > log 2> {log}
 
         cp {output.temp_dir}/{wildcards.barcode}_genefamilies.tsv {output.gene_fam}
         cp {output.temp_dir}/{wildcards.barcode}_pathcoverage.tsv {output.path_cov}
         cp {output.temp_dir}/{wildcards.barcode}_pathabundance.tsv {output.path_abu}
         """
 
+    
