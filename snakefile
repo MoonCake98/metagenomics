@@ -7,27 +7,58 @@ configfile: "config/config.yaml"
 # Parameters from config.yaml
 INPUT_DIR = config["INPUT_DIR"]
 OUTPUT_DIR = config["OUTPUT_DIR"]
+SEQUENCE_SUMMARY_FILE = config["SEQUENCE_SUMMARY_FILE"]
 SAMPLES = config["SAMPLES"]
+CHOCO_DB = config["CHOCO_PATH"]
+UNIREF_DB = config["UNIREF_PATH"]
+BARCODES = config["BARCODES"]
+BARCODE_DIR = config["BARCODE_DIR"]
+TAXON_PROFILE = config["TAXON_PROFILE"]
+
 # Final output files 
 rule all:
     input:
         # Run QC 
         expand(
-            "/students/2024-2025/Thema07/metagenomics/bioplastic/minion_qc_{sample}",
-            sample = SAMPLES
-        ),
-        expand("/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_barcode{barcode_number}_report.kreport2", barcode_number=config["barcode_numbers"]), # kreport2s
-        expand("/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_barcode{barcode_number}_output.txt", barcode_number=config["barcode_numbers"]), # _output.txt
-        expand("/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_barcode{barcode_number}_kraken_log.txt", barcode_number=config["barcode_numbers"]), # kraken2 logs
+            "{output_dir}/minion_qc/minion_qc_{sample}",
+            output_dir=OUTPUT_DIR, sample = SAMPLES),
+        # Merge for every barcode every file in the folder
+        expand("{output_dir}/data/combined_wgs_{barcode}.fastq",
+                output_dir = OUTPUT_DIR, barcode = BARCODES),
+        # Run Kraken2
+        expand("{output_dir}/kraken2_output/combined_wgs_barcode{barcode}_report.kreport2",
+                barcode=BARCODES), # kreport2s
+        expand("{output_dir}/kraken2_output/combined_wgs_barcode{barcode_number}_output.txt", 
+                barcode=BARCODES), # _output.txt
+        expand("{output_dir}/kraken2_output/combined_wgs_barcode{barcode_number}_kraken_log.txt", 
+                barcode=BARCODES), # kraken2 logs
 
         # Bracken output
         expand("{result}/bracken_output/{sample}.bracken", result = OUTPUT_DIR, sample = SAMPLES)
+        # Convert Kraken output to MPA output to use for HUMAnN
+        expand("{output_dir}/mpa/{barcode}.mpa.txt", 
+                output_dir = OUTPUT_DIR, barcode = BARCODES),
+        # Sorts the mpa files to an MPA that Humann takes
+        expand("{output_dir}/mpa/{barcode}_mpa.mpa.txt",
+                output_dir=OUTPUT_DIR, barcode=BARCODES),
+        # Combines MPA files to one combined file
+        expand("{output_dir}/mpa/sorted_combined_mpa.mpa.txt",
+                output_dir=OUTPUT_DIR),
+        # Run HUMAnN
+        expand("{output_dir}/humann/{barcode}_genefamilies.tsv",
+               barcode = BARCODES, output_dir = OUTPUT_DIR)
+        # Run eggnog 
+        expand("{output_dir}/eggnog_plots/{barcode}_eggnog.tsv",
+                output_dir = OUTPUT_DIR, barcode=BARCODES),
+        expand("{output_dir}/eggnog_plots/{barcode}_eggnog.png",
+                output_dir = OUTPUT_DIR, barcode = BARCODES)
+        
 
 # All the rules that is used.
-
 # Preprocessing check QC 
-include: "workflow/rules/minion_qc.smk"
-
+include: "workflow/rules/minion_qc.smk",
+# Merge the files in every barcode folder
+include: "workflow/rules/combine_wgs.smk",
 # Kraken rule
 rule kraken2:
     input:
@@ -47,3 +78,11 @@ rule kraken2:
 
 # Bracken rule
 include: "workflow/rules/bracken.smk"
+
+
+# Convert Kraken output to MPA format 
+include: "workflow/rules/kraken2mpa.smk",
+# HUMAnN functional analysis
+include: "workflow/rules/humann.smk"
+# Visualize with eggnog output
+include: "workflow/rules/visualize_humann.smk"
