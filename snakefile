@@ -19,32 +19,38 @@ TAXON_PROFILE = config["TAXON_PROFILE"]
 rule all:
     input:
         # Run QC 
-        expand(
-            "{output_dir}/minion_qc/minion_qc_{sample}",
-            output_dir=OUTPUT_DIR, sample = SAMPLES),
+        #expand(
+         #   "{output_dir}/minion_qc/minion_qc_{sample}",
+          #  output_dir=OUTPUT_DIR, sample = SAMPLES),
         # Merge for every barcode every file in the folder
-        expand("{output_dir}/data/combined_wgs_{barcode}.fastq",
-                output_dir = OUTPUT_DIR, barcode = BARCODES),
+        #expand("{output_dir}/data/combined_wgs_{barcode}.fastq",
+         #       output_dir = OUTPUT_DIR, barcode = BARCODES),
         # Convert Kraken output to MPA output to use for HUMAnN
-        expand("{output_dir}/mpa/{barcode}.mpa.txt", 
-                output_dir = OUTPUT_DIR, barcode = BARCODES),
+        #expand("{output_dir}/mpa/{barcode}.mpa.txt", 
+         #       output_dir = OUTPUT_DIR, barcode = BARCODES),
         # Sorts the mpa files to an MPA that Humann takes
-        expand("{output_dir}/mpa/{barcode}_mpa.mpa.txt",
-                output_dir=OUTPUT_DIR, barcode=BARCODES),
+        #expand("{output_dir}/mpa/{barcode}_mpa.mpa.txt",
+         #       output_dir=OUTPUT_DIR, barcode=BARCODES),
         # Combines MPA files to one combined file
-        expand("{output_dir}/mpa/sorted_combined_mpa.mpa.txt",
-                output_dir=OUTPUT_DIR),
+        #expand("{output_dir}/mpa/sorted_combined_mpa.mpa.txt",
+         #       output_dir=OUTPUT_DIR),
         # Run HUMAnN
-        expand("{output_dir}/humann/{barcode}_genefamilies.tsv",
-               barcode = BARCODES, output_dir = OUTPUT_DIR)
+        #expand("{output_dir}/humann/{barcode}_genefamilies.tsv",
+         #      barcode = BARCODES, output_dir = OUTPUT_DIR)
+        # Run eggnog 
+        expand("{output_dir}/eggnog_plots/{barcode}_eggnog.tsv",
+                output_dir = OUTPUT_DIR, barcode=BARCODES),
+        expand("{output_dir}/eggnog_plots/{barcode}_eggnog.png",
+                output_dir = OUTPUT_DIR, barcode = BARCODES)
+        
 
 # All the rules that is used.
 # Preprocessing check QC 
-include: "workflow/rules/minion_qc.smk",
+#include: "workflow/rules/minion_qc.smk",
 # Merge the files in every barcode folder
-include: "workflow/rules/combine_wgs.smk",
+#include: "workflow/rules/combine_wgs.smk",
 # Convert Kraken output to MPA format 
-include: "workflow/rules/kraken2mpa.smk",
+#include: "workflow/rules/kraken2mpa.smk",
 # HUMAnN functional analysis
-include: "workflow/rules/humann.smk"
-
+#include: "workflow/rules/humann.smk"
+include: "workflow/rules/visualize_humann.smk"
