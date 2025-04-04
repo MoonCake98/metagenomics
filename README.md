@@ -19,12 +19,19 @@
 
 #### python3 
 
-#### conda 
-Insta
+Download python3 from here (current version is 3.12.8):
+https://www.python.org/downloads/
 
+#### conda 
+You can install conda via Miniforge3:
+https://github.com/conda-forge/miniforge
+
+And activate conda by running:
+```
+conda init
+```
 
 Create an environment to run this workflow:
-
 
 ```
 conda create Snakemake_env
@@ -36,20 +43,14 @@ When you are in the environment, you can install snakemake:
 ```
 conda install snakemake
 ```
-After installing snakemake, to run using slurm you must install a snakemake plugin:
-```
-pip install snakemake-executor-plugin-slurm
-```
-
 
 ## Usage
 
 Run the workflow by running:
-
 ```
-snakemake --profile slurm/
+snakemake
 ```
-in the commandline
+in the metagenomics folder
 
 ## Results
 
