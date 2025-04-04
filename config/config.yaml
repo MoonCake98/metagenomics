@@ -3,8 +3,13 @@
 # Path to the input directory
 INPUT_FOLDER: "/commons/Themas/Thema07/metagenomics/bioplastic/soil_metagenomics_16S/ariana_desiree/20240423_1108_MN35459_FAY08769_85e26567/fastq_pass"
 
+INPUT_DIR: "/commons/Themas/Thema07/metagenomics/bioplastic"
+
 # Path to the output directory
-RESULTS: "/students/2024-2025/Thema07/metagenomics/bioplastic"
+OUTPUT_DIR: "/students/2024-2025/Thema07/metagenomics/bioplastic"
+
+
+SAMPLES: "20240418_1521_MN35459_FAX77312_60832f1a"
 
 
 # Path to the minionqc 

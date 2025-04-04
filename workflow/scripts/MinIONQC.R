@@ -415,7 +415,7 @@ channel.summary <- function(d){
               median.read.length = median(sequence_length_template),
               row = mean(row),
               col = mean(col))
-    b = melt(a, id.vars = c("channel", "row", "col"))
+    b = reshape2::melt(a, id.vars = c("channel", "row", "col"))
     return(b)    
 }
 
