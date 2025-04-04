@@ -8,6 +8,7 @@ OUTPUT_DIR: "/students/2024-2025/Thema07/metagenomics/bioplastic"
 # Sample file
 SAMPLES: "20240418_1521_MN35459_FAX77312_60832f1a"
 
+SEQUENCE_SUMMARY_FILE: "/commons/Themas/Thema07/metagenomics/bioplastic/soil_metagenomics/Ariana/20240418_1521_MN35459_FAX77312_60832f1a/sequencing_summary_FAX77312_60832f1a_527e8671.txt"
 
 BARCODE_DIR: "/commons/docent/Thema07/metagenomics/bioplastic/soil_metagenomics/Ariana/20240418_1521_MN35459_FAX77312_60832f1a/fastq_pass"
 
