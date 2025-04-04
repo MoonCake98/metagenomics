@@ -20,6 +20,8 @@ rule all:
         expand("/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_barcode{barcode_number}_output.txt", barcode_number=config["barcode_numbers"]), # _output.txt
         expand("/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output/combined_wgs_barcode{barcode_number}_kraken_log.txt", barcode_number=config["barcode_numbers"]), # kraken2 logs
 
+        # Bracken output
+        expand("{result}/bracken_output/{sample}.bracken", result = OUTPUT_DIR, sample = SAMPLES)
 
 # All the rules that is used.
 
@@ -41,4 +43,7 @@ rule kraken2:
         "--threads {threads} " # specify thread count
         "--report {output.kreport} " # specify kreport2 location and name 
         "--output {output.output_txt} " # specify output.txt location and name 
-        "{input} 2> {log}" # specify log location and name 
+        "{input} 2> {log}" # specify log location and name
+
+# Bracken rule
+include: "workflow/rules/bracken.smk"
