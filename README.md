@@ -23,10 +23,10 @@ Download python3 from here (current version is 3.12.8):
 https://www.python.org/downloads/
 
 #### conda 
-You can install conda via Miniforge3:
+You can install conda via Miniforge3(version used: Miniforge3-Linux-x86_64.sh):
 https://github.com/conda-forge/miniforge
 
-And activate conda by running:
+And activate conda (current conda version: 24.11.3) by running:
 ```
 conda init
 ```
@@ -39,7 +39,7 @@ conda activate Snakemake_env
 ```
 
 #### snakemake
-When you are in the environment, you can install snakemake:
+When you are in the environment, you can install snakemake(version 8.30.0):
 ```
 conda install snakemake
 ```
