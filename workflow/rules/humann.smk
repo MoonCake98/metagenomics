@@ -31,6 +31,7 @@ rule humann:
         --output-basename {wildcards.barcode} \
         > log 2> {log}
 
+        # Copies the output from the temporary directory and paste in the output directory
         cp {output.temp_dir}/{wildcards.barcode}_genefamilies.tsv {output.gene_fam}
         cp {output.temp_dir}/{wildcards.barcode}_pathcoverage.tsv {output.path_cov}
         cp {output.temp_dir}/{wildcards.barcode}_pathabundance.tsv {output.path_abu}
