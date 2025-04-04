@@ -19,14 +19,16 @@ rule all:
 #            results = RESULTS
 #
 #        ),
-        # bracken run:
-        expand("{results}/bracken/{sample}.bracken", results=RESULTS, sample=SAMPLE),
-        expand("{results}/bracken/{sample}_bracken_species.kreport2", results=RESULTS, sample=SAMPLE)
+        # kraken-biom on bracken output:
+        expand("{results}/biom/{samples}.biom", results=RESULTS, samples=SAMPLE)
 
 # All the rules that is used.
 
 # Preprocessing check QC 
 include: "workflow/rules/minion_qc.smk"
 
-# minimap rule
+# bracken rule
 include: "workflow/rules/bracken.smk"
+
+# kraken-biom rule
+include: "workflow/rules/biom.smk"
