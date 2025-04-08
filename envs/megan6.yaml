@@ -1,5 +1,16 @@
-# Dependencies for MEGAN6
+name: MEGAN6_env
 channels:
+  - bioconda
   - conda-forge
+  - defaults
 dependencies:
   - megan
+  - openjdk 
+
+
+# Dependencies for MEGAN6
+#channels:
+#  - conda-forge
+#dependencies:
+#  - megan
+#  - java

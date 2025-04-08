@@ -1,4 +1,4 @@
-# Config file
+################################################### Config file #######################################################
 
 # Path to the input directory
 INPUT_FOLDER: "/commons/Themas/Thema07/metagenomics/bioplastic/soil_metagenomics_16S/ariana_desiree/20240423_1108_MN35459_FAY08769_85e26567/fastq_pass"
@@ -9,12 +9,43 @@ RESULTS: "/students/2024-2025/Thema07/metagenomics/bioplastic"
 # Path to the minionqc 
 MINIONQC_PATH: "/homes/machristo/metagenomics/metagenomics/workflow/scripts"
 
+############################################# BRACKEN/KRAKEN PLOTS #######################################################
 
-##################################################### MEGAN ########################################################
-# Path to the files that should be converted to .csv for MEGAN
-#INPUT_CONVERTING_FILE: "/students/2024-2025/Thema07/metagenomics/bioplastic/bracken_output"
-INPUT_CONVERTING_FILE: "C:/Users/kasth/School/Programming/Year 2/Period 3 programming/tsv_file.txt"
-OUTPUT_CONVERTING_FILE: "C:/Users/kasth/School/Programming/Year 2/Period 3 programming"
+# Path to Bracken files
+BRACKEN_OUTPUT: "/students/2024-2025/Thema07/metagenomics/bioplastic/bracken_output"
 
-# Path to MEGAN
+# Path to Kraken files
+KRAKEN_OUTPUT: "/students/2024-2025/Thema07/metagenomics/bioplastic/kraken2_output"
+
+# List of the barcodes
+BARCODES:
+  - barcode01
+  #- barcode02
+  #- barcode03
+  - barcode04
+  - barcode05
+  - barcode06
+
+# Path of the output of the merged files of Bracken 
+MERGED_BRACKEN_FILES: "/students/2024-2025/Thema07/metagenomics/bioplastic/MERGED_BRACKEN_FILES"
+
+# Path of the output of stacked barplots from merged Bracken files
+STACKED_BARPLOT_BRACKEN: "/students/2024-2025/Thema07/metagenomics/bioplastic/STACKED_BARPLOT_BRACKEN"
+STACKED_BARPLOT_BRACKEN_PER_BARCODE: "/students/2024-2025/Thema07/metagenomics/bioplastic/STACKED_BARPLOT_BRACKEN_PER_BARCODE"
+
+# Path of the outtput of the heatmap from merged Bracken files
+HEATMAP_BRACKEN: "/students/2024-2025/Thema07/metagenomics/bioplastic/HEATMAP_BRACKEN"
+
+
+
+
+
+
+
+
+
+
+# Path to MEGAN6
 MEGAN_PATH: "/students/2024-2025/Thema07/metagenomics/bioplastic/MEGAN"
+
+
